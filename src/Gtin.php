@@ -48,10 +48,14 @@ class Gtin
         $this->type = $this->getType($gtin);
     }
     
-    public static function validate($gtin)
+    /**
+     * Static instantiation off class
+     * @param string $gtin
+     * @return \static
+     */
+    public static function check($gtin)
     {
-        $g = new Gtin($gtin);
-        return $g->isValid();
+        return new static($gtin);
     }
     
     /**
