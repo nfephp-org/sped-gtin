@@ -7,18 +7,33 @@ use PHPUnit\Framework\TestCase;
 
 class GtinTest extends TestCase
 {
+    /**
+     * @covers Gtin::getPrefix
+     * @covers Gtin::getType
+     * @covers Gtin::getPrefixRegion
+     * @covers Gtin::getCheckDigit
+     */
     public function testCanInstantiate()
     {
         $gtin = new Gtin('78935761');
         $this->assertInstanceOf('NFePHP\Gtin\Gtin', $gtin);
     }
     
+    /**
+     * @covers Gtin::getPrefix
+     * @covers Gtin::getType
+     * @covers Gtin::getPrefixRegion
+     * @covers Gtin::getCheckDigit
+     */
     public function testCanInstantiateStatic()
     {
         $gtin = Gtin::check('78935761');
         $this->assertInstanceOf('NFePHP\Gtin\Gtin', $gtin);
     }
-    
+
+    /**
+     * @covers Gtin::getPrefixRegion
+     */
     public function testRegion()
     {
         $gtin = new Gtin('78935761');
@@ -28,6 +43,9 @@ class GtinTest extends TestCase
         $this->assertEquals('GS1 Brasil', $region);
     }
     
+    /**
+     * @covers Gtin::getCheckDigit
+     */
     public function testCheckDigit()
     {
         $gtin = new Gtin('78935761');
@@ -37,6 +55,10 @@ class GtinTest extends TestCase
         $this->assertEquals(1, $dv);
     }
     
+    /**
+     * @covers Gtin::getPrefix
+     * @covers Gtin::getType
+     */
     public function testPrefix()
     {
         $gtin = new Gtin('78935761');

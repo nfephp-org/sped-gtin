@@ -46,7 +46,7 @@ class Gtin
      */
     protected $lenght;
     /**
-     * @var \stdClass
+     * @var array
      */
     protected $stdPrefixCollection;
     
@@ -80,7 +80,7 @@ class Gtin
     /**
      * Static instantiation off class
      * @param string $gtin
-     * @return \static
+     * @return \NFePHP\Gtin\Gtin
      */
     public static function check($gtin)
     {
@@ -89,7 +89,6 @@ class Gtin
     
     /**
      * Validate GTIN 8, 12, 13, or 14 with check digit
-     * @param string $gtin
      * @return boolean
      */
     public function isValid()
@@ -157,7 +156,6 @@ class Gtin
     
     /**
      * Validate prefix region
-     * @param string $prefix
      * @return boolean
      */
     protected function isPrefixValid()
@@ -200,6 +198,6 @@ class Gtin
             $total += ((($pos+1) % 2) * 2 + 1) * $gtin[$pos];
         }
         $dv = 10 - ($total % 10);
-        return (int) $dv;
+        return $dv;
     }
 }
