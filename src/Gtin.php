@@ -17,15 +17,44 @@ namespace NFePHP\Gtin;
 
 class Gtin
 {
-    public $stdPrefixCollection;
+    /**
+     * @var string
+     */
     public $prefix;
+    /**
+     * @var boolean
+     */
     public $restricted;
+    /**
+     * @var string
+     */
     public $region;
+    /**
+     * @var integer
+     */
     public $checkDigit;
+    /**
+     * @var integer
+     */
     public $type;
-    public $number;
-    public $lenght;
+    /**
+     * @var string
+     */
+    protected $number;
+    /**
+     * @var integer
+     */
+    protected $lenght;
+    /**
+     * @var \stdClass
+     */
+    protected $stdPrefixCollection;
     
+    /**
+     * Class constructor
+     * @param string $gtin
+     * @throws \InvalidArgumentException
+     */
     public function __construct($gtin)
     {
         $this->stdPrefixCollection = json_decode(file_get_contents(__DIR__.'/prefixcollection.json'));
