@@ -174,13 +174,13 @@ Este pacote está diponibilizado sob LGPLv3 ou MIT License (MIT). Leia  [Arquivo
 [ico-downloads]: https://img.shields.io/packagist/dt/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-version]: https://img.shields.io/packagist/v/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-license]: https://poser.pugx.org/nfephp-org/nfephp/license.svg?style=flat-square
-[ico-intelligence]: https://scrutinizer-ci.com/g/nfephp-org/sped-gtin/badges/code-intelligence.svg?b=master
+[ico-code-intelligence]: https://scrutinizer-ci.com/g/nfephp-org/sped-gtin/badges/code-intelligence.svg?b=master
 
 [link-packagist]: https://packagist.org/packages/nfephp-org/sped-gtin
 [link-travis]: https://travis-ci.org/nfephp-org/sped-gtin
 [link-scrutinizer]: https://scrutinizer-ci.com/g/nfephp-org/sped-gtin/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/nfephp-org/sped-gtin
-[link-cod-intelligence]: https://scrutinizer-ci.com/code-intelligence
+[link-code-intelligence]: https://scrutinizer-ci.com/code-intelligence
 [link-downloads]: https://packagist.org/packages/nfephp-org/sped-gtin
 [link-author]: https://github.com/nfephp-org
 [link-issues]: https://github.com/nfephp-org/sped-gtin/issues
