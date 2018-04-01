@@ -25,8 +25,7 @@
         "phpunit/phpunit": "^5.7",
         "scrutinizer/ocular": "^1.3",
         "phpmd/phpmd": "dev-master",
-        "sebastian/phpcpd": "^3.0",
-        "phpstan/phpstan": "^0.9.1"
+        "sebastian/phpcpd": "^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -42,7 +41,6 @@
         "test": "phpunit",
         "phpcbf": "vendor/bin/phpcbf --standard=psr2 src/",
         "phpcs": "vendor/bin/phpcs --standard=psr2 src/",
-        "phpstan": "vendor/bin/phpstan analyse src/ --level 7",
         "phpcpd": "vendor/bin/phpcpd src/ --progress",
         "phpmd": "vendor/bin/phpmd src/ text ruleset.xml"
     },
