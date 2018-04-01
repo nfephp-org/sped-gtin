@@ -124,7 +124,6 @@ class Gtin
         switch ($type) {
             case 14: //begins with number not zero
                 return substr($gtin, 1, 3);
-                break;
             default:
                 return substr($gtin, 0, 3);
         }
