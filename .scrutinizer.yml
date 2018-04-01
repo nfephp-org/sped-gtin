@@ -4,12 +4,6 @@ build:
             - "sudo composer self-update"
         override:
             - "composer install --no-interaction --prefer-dist"
-    tests:
-        override:
-            command: './vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=clover.xml'
-            coverage:
-                file: 'clover.xml'
-                format: 'php-clover'
     environment:
         php: '7.2'
         mysql: false
@@ -78,7 +72,6 @@ tools:
             - examples
             - tests
             - vendor
-
     # PHP CS Fixer (http://http://cs.sensiolabs.org/).
     php_cs_fixer:
         enabled: true
