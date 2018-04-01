@@ -12,6 +12,7 @@ class GtinTest extends TestCase
      * @covers Gtin::getType
      * @covers Gtin::getPrefixRegion
      * @covers Gtin::getCheckDigit
+     * @covers Gtin::__contruct
      */
     public function testCanInstantiate()
     {
@@ -24,6 +25,8 @@ class GtinTest extends TestCase
      * @covers Gtin::getType
      * @covers Gtin::getPrefixRegion
      * @covers Gtin::getCheckDigit
+     * @covers Gtin::__contruct
+     * @covers Gtin::check
      */
     public function testCanInstantiateStatic()
     {
