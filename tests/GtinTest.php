@@ -145,7 +145,7 @@ class GtinTest extends TestCase
     
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage O digito verificador é INVALIDO.
+     * @expectedExceptionMessage GTIN [7890142547851] digito verificador é INVALIDO.
      */
     public function testInvalidCheckDigit()
     {
