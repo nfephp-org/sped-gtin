@@ -82,16 +82,36 @@ try {
 }
 ```
 
+Ou ainda:
+
+```php
+
+use NFePHP\Gtin\Gtin;
+
+$gtin = "78935761";
+
+try {
+    if (Gtin::check($gtin)->isValid()) {
+        echo "Valido";
+    }
+} catch (\Exception $e) {
+    echo $e->getMessage();
+}
+```
+
+
 ## Validações e Exceptions
 
-Caso o numero fornecido não atenda alguma restrição será retornado um Exception
+Caso o numero fornecido não atenda alguma restrição será retornado um Exception:
 
-- Um GTIN deve ser passado para a classe.
-- GTIN deve conter apenas numeros.
-- Apenas GTIN 8, 12, 13 ou 14 esse numero não atende esses parâmetros.
-- Um GTIN 14 não pode iniciar com numeral ZERO.
-- O prefixo $this->prefix do GTIN é INVALIDO [$this->region].
-- O digito verificador é INVALIDO.
+| Exception | Causa | Solução |
+| :---:  | :---: | :---: | 
+|Um numero GTIN deve ser passado.| Nenhuma variável foi passada como parâmetro | Verifique o conteúdo da variável que deve ser o GTIN |
+|Um numero GTIN contêm apenas numeros [????] não é aceito.| Foi passado uma string contendo digitos não numéricos | Verifique o conteúdo da variável que deve ser o GTIN |
+|Apenas GTIN 8, 12, 13 ou 14 esse numero não atende esses parâmetros.| Com os nomes dizem os GTIN devem ter tamanhos definidos 8,12,13 ou 14 | Verifique o conteúdo da variável que deve ser o GTIN |
+|Um GTIN 14 não pode iniciar com numeral ZERO.| auto explicativo | Verifique o conteúdo da variável que deve ser o GTIN |
+|O prefixo ??? do GTIN é INVALIDO [???].| O prefixo usado não corresponde a lista de prefixos válidos ou é um de uso restrito | Esse numero não deve estar correto |
+|O digito verificador é INVALIDO.| O último digito é calculado e não corresponde ao fornecido | Esse numero de GTIN está INCORRETO |
 
 
 Este pacote é aderente com os [PSR-1], [PSR-2] e [PSR-4]. Se você observar negligências de conformidade, por favor envie um patch via pull request.
