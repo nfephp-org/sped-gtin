@@ -82,7 +82,7 @@ class GtinTest extends TestCase
     
     /**
      *  @expectedException \InvalidArgumentException
-     *  @expectedExceptionMessage Um GTIN deve ser passado para a classe.
+     *  @expectedExceptionMessage Um numero GTIN deve ser passado.
      */
     public function testFailStringEmptyGtin()
     {
@@ -91,7 +91,7 @@ class GtinTest extends TestCase
     
     /**
      *  @expectedException \InvalidArgumentException
-     *  @expectedExceptionMessage Um GTIN deve ser passado para a classe.
+     *  @expectedExceptionMessage Um numero GTIN deve ser passado.
      */    
     public function testFailNullGtin()
     {
@@ -100,7 +100,7 @@ class GtinTest extends TestCase
     
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage GTIN deve conter apenas numeros.
+     * @expectedExceptionMessage Um numero GTIN contêm apenas numeros [A12345] não é aceito.
      */
     public function testInvalidStringGtin()
     {
@@ -109,7 +109,7 @@ class GtinTest extends TestCase
     
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Apenas GTIN 8, 12, 13 ou 14 esse numero não atende esses parâmetros.
+     * @expectedExceptionMessage Apenas numeros GTIN 8, 12, 13 ou 14 este [12345] não atende esses parâmetros.
      */
     public function testInvalidMinLengthGtin()
     {
@@ -118,7 +118,7 @@ class GtinTest extends TestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Apenas GTIN 8, 12, 13 ou 14 esse numero não atende esses parâmetros.
+     * @expectedExceptionMessage Apenas numeros GTIN 8, 12, 13 ou 14 este [1234567890123456] não atende esses parâmetros.
      */
     public function testInvalidMaxLengthGtin()
     {
@@ -127,7 +127,7 @@ class GtinTest extends TestCase
     
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Apenas GTIN 8, 12, 13 ou 14 esse numero não atende esses parâmetros.
+     * @expectedExceptionMessage Apenas numeros GTIN 8, 12, 13 ou 14 este [1234567890] não atende esses parâmetros.
      */
     public function testInvalidLengthGtin()
     {
