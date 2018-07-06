@@ -4,7 +4,9 @@ A partir do layout 4.00 da NFe (e NFCe) o GTIN do produto passa a ser um item OB
 
 É importantissimo que esses GTIN sejam corretos e validados, antes de serem inseridos em seus sistemas para evitar rejeições por parte da SEFAZ.
 
-Esta classe faz exatamente isso verifica a correção do numero GTIN, com releção a sua estrutura, prefixo, região e digito verificador. A SEFAZ fará cunstultas adicionais ao [Cadastro Nacional de Produtos - CNP](https://www.gs1br.org/servicos-e-solucoes/cadastro-centralizado-de-gtin?gclid=Cj0KCQjw4_zVBRDVARIsAFNI9eCoTYJdZTQ36i4aAWsW4Hmppbqk4BVEvty4gQKXnMnAfX2XRcQcawwaAgv9EALw_wcB). mas ainda não existe a disponibilidade de uma API para que nós também possamos faze-lo, então ainda poderão haver rejeições caso os dados que você possue não estejam de acordo com o CNP. 
+Esta classe faz exatamente isso, verifica a correção do numero GTIN, com relação a sua estrutura, prefixo, região e digito verificador.
+
+A SEFAZ fará consultas adicionais ao [Cadastro Nacional de Produtos - CNP](https://www.gs1br.org/servicos-e-solucoes/cadastro-centralizado-de-gtin?gclid=Cj0KCQjw4_zVBRDVARIsAFNI9eCoTYJdZTQ36i4aAWsW4Hmppbqk4BVEvty4gQKXnMnAfX2XRcQcawwaAgv9EALw_wcB). mas ainda não existe a disponibilidade de uma API para que nós também possamos faze-lo, então ainda poderão haver rejeições caso os dados que você possue não estejam de acordo com o CNP. 
 
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
