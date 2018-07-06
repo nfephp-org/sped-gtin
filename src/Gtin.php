@@ -59,15 +59,15 @@ class Gtin
     {
         $this->stdPrefixCollection = json_decode(file_get_contents(__DIR__.'/prefixcollection.json'));
         if (empty($gtin)) {
-            throw new \InvalidArgumentException('Um GTIN deve ser passado para a classe.');
+            throw new \InvalidArgumentException("Um numero GTIN deve ser passado.");
         }
         if (preg_match('/[^0-9]/', $gtin)) {
-            throw new \InvalidArgumentException('GTIN deve conter apenas numeros.');
+            throw new \InvalidArgumentException("Um numero GTIN contêm apenas numeros [$gtin] não é aceito.");
         }
         $this->lenght = (int) strlen($gtin);
         if ($this->lenght != 8 && $this->lenght != 12 && $this->lenght != 13 && $this->lenght != 14) {
             throw new \InvalidArgumentException(
-                "Apenas GTIN 8, 12, 13 ou 14 esse numero não atende esses parâmetros."
+                "Apenas numeros GTIN 8, 12, 13 ou 14 este [$gtin] não atende esses parâmetros."
             );
         }
         $this->number = $gtin;
@@ -179,6 +179,7 @@ class Gtin
                 return $region;
             }
         }
+        $this->restricted = true;
         return "Not Found";
     }
     
