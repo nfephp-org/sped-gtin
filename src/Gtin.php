@@ -107,7 +107,7 @@ class Gtin
         $dv = (int) substr($this->number, -1);
         if ($dv !== $this->checkDigit) {
             throw new \InvalidArgumentException(
-                "O digito verificador é INVALIDO."
+                "GTIN [$this->number] digito verificador é INVALIDO."
             );
         }
         return true;
