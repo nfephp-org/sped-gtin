@@ -1,6 +1,6 @@
 # sped-gtin
 
-A partir do leyout 4.00 da NFe (e NFCe) o GTIN do produto passa a ser um item OBRIGATÓRIO, quando existir. Protanto em todas as NFe (e NFCe) que contêm produtos que possuem códigos de barras para fins comerciais (GTIN 8, 12, 13 ou 14) derão indicar os mesmos em suas notas.
+A partir do layout 4.00 da NFe (e NFCe) o GTIN do produto passa a ser um item OBRIGATÓRIO, quando existir. Portanto em todas as NFe (e NFCe) que contêm produtos que possuem códigos de barras para fins comerciais (GTIN 8, 12, 13 ou 14) derão indicar os mesmos em suas notas.
 
 É importantissimo que esses GTIN sejam corretos e validados, antes de serem inseridos em seus sistemas para evitar rejeições por parte da SEFAZ.
 
