@@ -186,7 +186,7 @@ Roberto L. Machado (owner and developer)
 
 Este pacote está diponibilizado sob LGPLv3 ou MIT License (MIT). Leia  [Arquivo de Licença](LICENSE.md) para maiores informações.
 
-[ico-stable]: https://poser.pugx.org/nfephp-org/sped-gtin/version
+[ico-stable]: https://poser.okvpn.org/nfephp-org/sped-gtin/v/stable
 [ico-stars]: https://img.shields.io/github/stars/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-forks]: https://img.shields.io/github/forks/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-issues]: https://img.shields.io/github/issues/nfephp-org/sped-gtin.svg?style=flat-square
@@ -195,7 +195,7 @@ Este pacote está diponibilizado sob LGPLv3 ou MIT License (MIT). Leia  [Arquivo
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-version]: https://img.shields.io/packagist/v/nfephp-org/sped-gtin.svg?style=flat-square
-[ico-license]: https://poser.pugx.org/nfephp-org/nfephp/license.svg?style=flat-square
+[ico-license]: https://poser.okvpn.org/nfephp-org/sped-gtin/license
 [ico-code-intelligence]: https://scrutinizer-ci.com/g/nfephp-org/sped-gtin/badges/code-intelligence.svg?b=master
 
 [link-packagist]: https://packagist.org/packages/nfephp-org/sped-gtin
