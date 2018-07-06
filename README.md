@@ -1,8 +1,8 @@
 # sped-gtin
 
-A partir do leyout 4.00 da NFe (e NFCe) o GTIN do produto passa a ser um item OBRIGATÓRIO, qunado existir. Protanto em todas as NFe (e NFCe) que contêm produtos que possuem codigos de barras para fins comerciais (GTIN 8, 12,. 13 ou 14) derão indicar os mesmos em suas notas.
+A partir do leyout 4.00 da NFe (e NFCe) o GTIN do produto passa a ser um item OBRIGATÓRIO, quando existir. Protanto em todas as NFe (e NFCe) que contêm produtos que possuem códigos de barras para fins comerciais (GTIN 8, 12, 13 ou 14) derão indicar os mesmos em suas notas.
 
-É importantissimo que esses GTIN sejam corretos e validados, antes de serem insereidos em seus sistemas para evitar rejeições por parte da SEFAZ.
+É importantissimo que esses GTIN sejam corretos e validados, antes de serem inseridos em seus sistemas para evitar rejeições por parte da SEFAZ.
 
 Esta classe faz exatamente isso verifica a correção do numero GTIN, com releção a sua estrutura, prefixo, região e digito verificador. A SEFAZ fará cunstultas adicionais ao [Cadastro Nacional de Produtos - CNP](https://www.gs1br.org/servicos-e-solucoes/cadastro-centralizado-de-gtin?gclid=Cj0KCQjw4_zVBRDVARIsAFNI9eCoTYJdZTQ36i4aAWsW4Hmppbqk4BVEvty4gQKXnMnAfX2XRcQcawwaAgv9EALw_wcB). mas ainda não existe a disponibilidade de uma API para que nós também possamos faze-lo, então ainda poderão haver rejeições caso os dados que você possue não estejam de acordo com o CNP. 
 
@@ -137,7 +137,7 @@ composer require nfephp-org/sped-gtin:dev-master
 
 Para que este pacote possa funcionar são necessários os seguintes requisitos do PHP e outros pacotes dos quais esse depende.
 
-- PHP 5.6 ou PHP 7.x (recomendável PHP 7.x) 
+- PHP 7.x (recomendável PHP 7.2.x) 
 
 
 ## Contributing
