@@ -198,6 +198,9 @@ class Gtin
             $total += ((($pos+1) % 2) * 2 + 1) * $gtin[$pos];
         }
         $dv = 10 - ($total % 10);
+        if ($dv == 10) {
+            $dv = 0;
+        }
         return $dv;
     }
 }
