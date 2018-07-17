@@ -54,7 +54,7 @@ try {
 
 **restricted - (bool) indica se o pefixo é de uso restrito**
 
-**type -  - (int) indica o tipo de gtin (8,12,13, ou 14)**
+**type - (int) indica o tipo de gtin (8,12,13, ou 14)**
 
 ### A função principal da classe é :
 
