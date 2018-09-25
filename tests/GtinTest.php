@@ -136,11 +136,11 @@ class GtinTest extends TestCase
     
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage O prefixo 021 do GTIN é INVALIDO [Números de circulação restrita dentro da região].
+     * @expectedExceptionMessage O prefixo 510 do GTIN é INVALIDO [Not Found].
      */
     public function testInvalidPrefixGtin()
     {
-        $gtin = Gtin::check('0219907267612')->isValid();
+        $gtin = Gtin::check('5109907267612')->isValid();
     }
     
     /**
