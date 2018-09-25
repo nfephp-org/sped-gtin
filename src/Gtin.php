@@ -22,10 +22,6 @@ class Gtin
      */
     public $prefix;
     /**
-     * @var boolean
-     */
-    public $restricted;
-    /**
      * @var string
      */
     public $region;
@@ -49,6 +45,10 @@ class Gtin
      * @var array
      */
     protected $stdPrefixCollection;
+    /**
+     * @var boolean
+     */
+    protected $validPrefix = false;
     
     /**
      * Class constructor
@@ -159,7 +159,7 @@ class Gtin
      */
     protected function isPrefixValid()
     {
-        return !$this->restricted;
+        return $this->validPrefix;
     }
     
     /**
@@ -173,13 +173,13 @@ class Gtin
         foreach ($this->stdPrefixCollection as $std) {
             $nI = (int) $std->nIni;
             $nF = (int) $std->nFim;
-            $this->restricted = (boolean) $std->restricted;
+            $this->validPrefix = true;
             $region = $std->region;
             if ($pf >= $nI && $pf <= $nF) {
                 return $region;
             }
         }
-        $this->restricted = true;
+        $this->validPrefix = false;
         return "Not Found";
     }
     
