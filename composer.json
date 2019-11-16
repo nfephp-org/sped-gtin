@@ -29,8 +29,8 @@
     },
     "autoload": {
         "psr-4": {
-          "NFePHP\\Gtin\\": "src/"
-        } 
+            "NFePHP\\Gtin\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
