@@ -1,11 +1,37 @@
+checks:
+    php: true
+coding_style:
+    php:
+        spaces:
+            around_operators:
+                concatenation: true
+filter:
+    excluded_paths:
+        - "vendor/*"
+        - "examples/*"
+        - "docs/*"
+        - "console/*"
+        - "schemes/*"
+        - "tests/*"
+        - "storage/*"
+    paths:
+        - "src/*"
+tools:
+    php_analyzer: true
+    php_changetracking: true
+    php_code_sniffer:
+        enabled: true
+        config:
+            standard: PSR2
+    php_cpd: true
+    php_mess_detector: true
+    php_pdepend: true
+    php_sim: true
+
 build:
-    dependencies:
-        before:
-            - "sudo composer self-update"
-        override:
-            - "composer install --no-interaction --prefer-dist"
     environment:
-        php: '7.2'
+        php:
+            version: 7.3
         mysql: false
         postgresql: false
         redis: false
@@ -14,107 +40,13 @@ build:
         mongodb: false
         neo4j: false
         memcached: false
-    nodes:
-        analysis:
-            tests:
-                override:
-                    - php-scrutinizer-run
-before_commands:
-    - "composer install --prefer-source"
-
-filter:
-    excluded_paths: [tests/*]
-
-checks:
-    php:
-        code_rating: true
-        remove_extra_empty_lines: true
-        remove_php_closing_tag: true
-        remove_trailing_whitespace: true
-        fix_use_statements:
-            remove_unused: true
-            preserve_multiple: false
-            preserve_blanklines: true
-            order_alphabetically: true
-        fix_php_opening_tag: true
-        fix_linefeed: true
-        fix_line_ending: true
-        fix_identation_4spaces: true
-        fix_doc_comments: true
-
-tools:
-    # code coverage                
-    php_code_coverage:
-        enabled: true
-        filter:
-            excluded_paths:
-                - 'docs/*'
-                - 'examples/*'
-                - 'tests/*'
-                - 'vendor/*'
-    # code sniffer
-    php_code_sniffer:
-        enabled: true
-        config:
-            standard: PSR2
-        filter:
-            excluded_paths:
-                - 'docs/*'
-                - 'examples/*'
-                - 'tests/*'
-                - 'vendor/*'
-
-    # Copy/Paste Detector
-    php_cpd:
-        enabled: true
-        excluded_dirs:
-            - docs
-            - examples
-            - tests
-            - vendor
-    # PHP CS Fixer (http://http://cs.sensiolabs.org/).
-    php_cs_fixer:
-        enabled: true
-        config:
-            level: psr2
-        filter:
-            excluded_paths:
-                - 'docs/*'
-                - 'examples/*'
-                - 'tests/*'
-                - 'vendor/*'
-    # Analyzes the size and structure of a PHP project.
-    php_loc:
-        enabled: true
-        excluded_dirs:
-            - docs
-            - examples
-            - tests
-            - vendor
-    # PHP Mess Detector (http://phpmd.org).
-    php_mess_detector:
-        enabled: true
-        config:
-            rulesets:
-                - codesize
-                - unusedcode
-                - naming
-                - design
-            naming_rules:
-                short_variable: { minimum: 2 }
-        filter:
-            excluded_paths:
-                - 'docs/*'
-                - 'examples/*'
-                - 'tests/*'
-                - 'vendor/*'
-    # Analyzes the size and structure of a PHP project.
-    php_pdepend:
-        enabled: true
-        excluded_dirs:
-            - docs
-            - examples
-            - tests
-            - vendor    
-    # Security Advisory Checker
-    sensiolabs_security_checker: true
+    dependencies:
+        override:
+            - 'composer install --no-interaction --prefer-dist'
+    tests:
+        override:
+            -
+                command: './vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=clover.xml'
+                coverage:
+                    file: 'clover.xml'
+                    format: 'php-clover'
