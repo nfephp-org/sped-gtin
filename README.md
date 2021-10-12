@@ -4,6 +4,29 @@ A partir do layout 4.00 da NFe (e NFCe) o GTIN do produto passa a ser um item OB
 
 É importantissimo que esses GTIN sejam corretos e validados, antes de serem inseridos em seus sistemas para evitar rejeições por parte da SEFAZ.
 
+## NT 2021.003_v1_00 Validação do GTIN
+
+Esta Nota Técnica entrou em vigor em setembro e estabelece que apenas GTINs nacionais podem ser utilizados, ou seja apenas GTINs que iniciem 789 ou 790, além disso apenas os produtos cadastrados no [Cadastro Nacional de Produtos - CNP](https://cnp.gs1br.org/).
+
+É importante destacar que o cadastro centralizado irá também comparar outras informações como:
+
+- GTIN
+- Marca
+- Tipo GTIN (8, 12, 13 ou 14 posições)
+- Descrição do Produto
+- Identificação do Dono da Marca (CNPJ ou CPF)
+- Dados da classificação do produto (Segmento, Família, Classe e Subclasse/Bloco)
+- NCM
+- CEST (quando existir)
+- Peso Bruto e Peso Líquido
+- Unidade de Medida de Peso Bruto e Peso Líquido
+
+Estes dados devem estar compatíveis com os informados na NFe ou NFCe.
+
+
+**NOTA: caso o fabricante/importador, não cadastre corretamente o seu produto poderão ocorrer rejeiçoes, isso não afeta os comerciantes pois quem será impedido de emitir a NFe será o fabricante/importador.**
+
+
 Esta classe faz exatamente isso, verifica a correção do numero GTIN, com relação a sua estrutura, prefixo, região e digito verificador.
 
 A SEFAZ fará consultas adicionais ao [Cadastro Nacional de Produtos - CNP](https://www.gs1br.org/servicos-e-solucoes/cadastro-centralizado-de-gtin?gclid=Cj0KCQjw4_zVBRDVARIsAFNI9eCoTYJdZTQ36i4aAWsW4Hmppbqk4BVEvty4gQKXnMnAfX2XRcQcawwaAgv9EALw_wcB). mas ainda não existe a disponibilidade de uma API para que nós também possamos faze-lo, então ainda poderão haver rejeições caso os dados que você possue não estejam de acordo com o CNP. 
