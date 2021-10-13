@@ -31,8 +31,6 @@ Esta classe faz exatamente isso, verifica a correção do numero GTIN, com rela�
 
 A SEFAZ fará consultas adicionais ao [Cadastro Nacional de Produtos - CNP](https://www.gs1br.org/servicos-e-solucoes/cadastro-centralizado-de-gtin?gclid=Cj0KCQjw4_zVBRDVARIsAFNI9eCoTYJdZTQ36i4aAWsW4Hmppbqk4BVEvty4gQKXnMnAfX2XRcQcawwaAgv9EALw_wcB). mas ainda não existe a disponibilidade de uma API para que nós também possamos faze-lo, então ainda poderão haver rejeições caso os dados que você possue não estejam de acordo com o CNP. 
 
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Actions Status][ico-workflow]][link-actions]
 
 [![Latest Stable Version][ico-stable]][link-packagist]
@@ -213,8 +211,6 @@ Este pacote está diponibilizado sob LGPLv3 ou MIT License (MIT). Leia  [Arquivo
 [ico-stars]: https://img.shields.io/github/stars/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-forks]: https://img.shields.io/github/forks/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-issues]: https://img.shields.io/github/issues/nfephp-org/sped-gtin.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/nfephp-org/sped-gtin/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-workflow]: https://github.com/nfephp-org/sped-gtin/actions/workflows/ci.yml/badge.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-version]: https://img.shields.io/packagist/v/nfephp-org/sped-gtin.svg?style=flat-square
@@ -222,10 +218,6 @@ Este pacote está diponibilizado sob LGPLv3 ou MIT License (MIT). Leia  [Arquivo
 
 
 [link-packagist]: https://packagist.org/packages/nfephp-org/sped-gtin
-[link-travis]: https://travis-ci.org/nfephp-org/sped-gtin
-[link-scrutinizer]: https://scrutinizer-ci.com/g/nfephp-org/sped-gtin/code-structure
-[link-code-quality]: https://scrutinizer-ci.com/g/nfephp-org/sped-gtin
-[link-code-intelligence]: https://scrutinizer-ci.com/code-intelligence
 [link-downloads]: https://packagist.org/packages/nfephp-org/sped-gtin
 [link-author]: https://github.com/nfephp-org
 [link-issues]: https://github.com/nfephp-org/sped-gtin/issues
