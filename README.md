@@ -98,7 +98,7 @@ try {
     $digitoVerificador = $gtin->checkDigit;
     
     if ($gtin->isValid()) {
-        echo "Valido";
+        echo "Válido";
     }
 } catch (\Exception $e) {
     echo $e->getMessage();
@@ -115,13 +115,14 @@ $gtin = "78935761";
 
 try {
     if (Gtin::check($gtin)->isValid()) {
-        echo "Valido";
+        echo "Válido";
     }
 } catch (\Exception $e) {
     echo $e->getMessage();
 }
 ```
 
+*NOTA: A validação retornará TRUE (Válida) caso o GTIN seja "SEM GTIN" exatamente dessa forma com letras maiúsculas, qualquer outra forma gera uma rejeição.*
 
 ## Validações e Exceptions
 
@@ -135,7 +136,7 @@ Caso o numero fornecido não atenda alguma restrição será retornado um Except
 |Um GTIN 14 não pode iniciar com numeral ZERO.| auto explicativo | Verifique o conteúdo da variável que deve ser o GTIN |
 |O prefixo ??? do GTIN é INVALIDO [???].| O prefixo usado não corresponde a lista de prefixos válidos ou é um de uso restrito | Esse numero não deve estar correto |
 |O digito verificador é INVALIDO.| O último digito é calculado e não corresponde ao fornecido | Esse numero de GTIN está INCORRETO |
-
+|Somente prefixos do Brasil [789, 790] são aceitáveis. O prefixo $this->prefix do GTIN é INVALIDO [???].|GTIN não é do GS1 Brasil|Esse número GTIN não é aceitável pela SEFAZ|
 
 Este pacote é aderente com os [PSR-1], [PSR-2] e [PSR-4]. Se você observar negligências de conformidade, por favor envie um patch via pull request.
 
