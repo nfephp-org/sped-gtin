@@ -108,9 +108,6 @@ class GtinTest extends TestCase
     {
         $gtin = new Gtin('78935761');
         $this->assertEquals('789', $gtin->prefix);
-        
-        $prefix = Gtin::check('78935761')->prefix;
-        $this->assertEquals('789', $prefix);
     }
     
     /**
@@ -124,9 +121,19 @@ class GtinTest extends TestCase
     {
         $gtin = new Gtin('78935761');
         $this->assertTrue($gtin->isValid());
-        
-        $resp = Gtin::check('78935761')->isValid();
-        $this->assertTrue($resp);
+    }
+    
+    /**
+     * SEM GTIN is Valid
+     * 
+     * @covers Gtin::isValid
+     * 
+     * @return void
+     */
+    public function testSemGetin()
+    {
+        $gtin = new Gtin('SEM GTIN');
+        $this->assertTrue($gtin->isValid());
     }
     
     /**
