@@ -74,6 +74,12 @@ final class Gtin
      * @var boolean
      */
     protected $validPrefix = false;
+    /**
+     * Indication SEM GTIN
+     * 
+     * @var boolean 
+     */
+    protected $semgtin = false;
 
     /**
      * Caonstructor
@@ -84,6 +90,16 @@ final class Gtin
      */
     public function __construct(string $gtin = null)
     {
+        if ($gtin == 'SEM GTIN') {
+            $this->number = 'SEM GTIN';
+            $this->prefix = '000';
+            $this->region = 'GS1 Brasil';
+            $this->checkDigit = 0;
+            $this->type = 0;
+            $this->semgtin = true;
+            $this->validPrefix = true;
+            return;
+        }
         $this->stdPrefixCollection = json_decode(
             file_get_contents(__DIR__.'/prefixcollection.json')
         );
@@ -107,10 +123,10 @@ final class Gtin
             );
         }
         $this->number = $gtin;
-        $this->prefix = $this->getPrefix($gtin);
+        $this->prefix = $this->getPrefix();
         $this->region = $this->getPrefixRegion($this->prefix);
-        $this->checkDigit = $this->getCheckDigit($gtin);
-        $this->type = $this->getType($gtin);
+        $this->checkDigit = $this->getCheckDigit();
+        $this->type = $this->getType();
     }
 
     /**
@@ -134,6 +150,9 @@ final class Gtin
      */
     public function isValid()
     {
+        if ($this->semgtin) {
+            return true;
+        }
         if ($this->lenght == 14 && substr($this->number, 0, 1) == '0') {
             //first digit of GTIN14 can not be zero
             throw new \InvalidArgumentException(
@@ -163,31 +182,27 @@ final class Gtin
     /**
      * Extract region prefix
      *
-     * @param string $gtin gtin number
-     * 
      * @return string
      */
-    protected function getPrefix($gtin)
+    protected function getPrefix()
     {
-        $type = $this->getType($gtin);
+        $type = $this->getType();
         switch ($type) {
         case 14: //begins with number not zero
-            return substr($gtin, 1, 3);
+            return substr($this->number, 1, 3);
         default:
-            return substr($gtin, 0, 3);
+            return substr($this->number, 0, 3);
         }
     }
 
     /**
      * Identify GTIN type GTIN 8,12,13,14 or NONE
      *
-     * @param string $gtin gtin number
-     * 
      * @return int
      */
-    protected function getType(string $gtin)
+    protected function getType()
     {
-        $gtinnorm = str_pad($gtin, 14, '0', STR_PAD_LEFT);
+        $gtinnorm = str_pad($this->number, 14, '0', STR_PAD_LEFT);
         if (substr($gtinnorm, 0, 6) == '000000') {
             //GTIN 8
             return 8;
@@ -240,14 +255,12 @@ final class Gtin
     /**
      * Calculate check digit from GTIN 8, 12, 13 or 14
      *
-     * @param string $gtin gtin number
-     * 
      * @return integer
      */
-    public function getCheckDigit($gtin)
+    protected function getCheckDigit()
     {
-        $len = (int) strlen($gtin);
-        $gtin = substr($gtin, 0, $len-1);
+        $len = (int) strlen($this->number);
+        $gtin = substr($this->number, 0, $len-1);
         $gtin = str_pad($gtin, 15, '0', STR_PAD_LEFT);
         $total = 0;
         for ($pos = 0; $pos < 15; $pos++) {
