@@ -216,7 +216,7 @@ Este pacote está diponibilizado sob LGPLv3 ou MIT License (MIT). Leia  [Arquivo
 [ico-issues]: https://img.shields.io/github/issues/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/nfephp-org/sped-gtin/master.svg?style=flat-square
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/nfephp-org/sped-gtin.svg?style=flat-square
-![example workflow](https://github.com/nfephp-org/sped-gtin/actions/workflows/ci.yml/badge.svg)
+[workflow]: https://github.com/nfephp-org/sped-gtin/actions/workflows/ci.yml/badge.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-version]: https://img.shields.io/packagist/v/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-license]: https://poser.okvpn.org/nfephp-org/sped-gtin/license
