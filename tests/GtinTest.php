@@ -32,11 +32,8 @@ class GtinTest extends TestCase
     /**
      * Can instantiate class test 
      * 
-     * @covers Gtin::getPrefix
-     * @covers Gtin::getType
-     * @covers Gtin::getPrefixRegion
-     * @covers Gtin::getCheckDigit
-     * @covers Gtin::__contruct
+     * @covers Gtin
+     * @covers ::__contruct
      * 
      * @return void
      */
@@ -49,12 +46,9 @@ class GtinTest extends TestCase
     /**
      * Can instantiate static class test 
      * 
-     * @covers Gtin::getPrefix
-     * @covers Gtin::getType
-     * @covers Gtin::getPrefixRegion
-     * @covers Gtin::getCheckDigit
-     * @covers Gtin::__contruct
-     * @covers Gtin::check
+     * @covers Gtin
+     * @covers ::__contruct
+     * @covers ::check
      * 
      * @return void
      */
