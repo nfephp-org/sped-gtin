@@ -33,8 +33,7 @@ A SEFAZ fará consultas adicionais ao [Cadastro Nacional de Produtos - CNP](http
 
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
-[![Code Intelligence Status][ico-code-intelligence]][link-code-intelligence]
+[![Actions Status][ico-workflow]][link-actions]
 
 [![Latest Stable Version][ico-stable]][link-packagist]
 [![Latest Version on Packagist][ico-version]][link-packagist]
@@ -216,7 +215,7 @@ Este pacote está diponibilizado sob LGPLv3 ou MIT License (MIT). Leia  [Arquivo
 [ico-issues]: https://img.shields.io/github/issues/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/nfephp-org/sped-gtin/master.svg?style=flat-square
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/nfephp-org/sped-gtin.svg?style=flat-square
-[workflow]: https://github.com/nfephp-org/sped-gtin/actions/workflows/ci.yml/badge.svg?style=flat-square
+[ico-workflow]: https://github.com/nfephp-org/sped-gtin/actions/workflows/ci.yml/badge.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-version]: https://img.shields.io/packagist/v/nfephp-org/sped-gtin.svg?style=flat-square
 [ico-license]: https://poser.okvpn.org/nfephp-org/sped-gtin/license
@@ -232,4 +231,5 @@ Este pacote está diponibilizado sob LGPLv3 ou MIT License (MIT). Leia  [Arquivo
 [link-issues]: https://github.com/nfephp-org/sped-gtin/issues
 [link-forks]: https://github.com/nfephp-org/sped-gtin/network
 [link-stars]: https://github.com/nfephp-org/sped-gtin/stargazers
+[link-actions]: https://github.com/nfephp-org/sped-gtin/actions
 
