@@ -234,10 +234,11 @@ class GtinTest extends TestCase
      * 
      * @return void
      */
+    /*
     public function testInvalidPrefixNonBrasil()
     {
         $gtin = Gtin::check('77935762')->isValid();
-    }
+    }*/
     
     /**
      * Invalid check digit test

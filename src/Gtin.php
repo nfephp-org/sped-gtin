@@ -164,12 +164,14 @@ final class Gtin
                 "O prefixo $this->prefix do GTIN é INVALIDO [$this->region]."
             );
         }
+        /*
+         * REATIVAR Futuramente
         if ($this->region != 'GS1 Brasil') {
             throw new \InvalidArgumentException(
                 "Somente prefixos do Brasil [789 e 790] são aceitáveis. "
                 . "O prefixo $this->prefix do GTIN é INVALIDO [$this->region]."
             );
-        }
+        }*/
         $dv = (int) substr($this->number, -1);
         if ($dv !== $this->checkDigit) {
             throw new \InvalidArgumentException(
