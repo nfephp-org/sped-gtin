@@ -23,6 +23,8 @@ Esta Nota Técnica entrou em vigor em setembro e estabelece que apenas GTINs nac
 
 Estes dados devem estar compatíveis com os informados na NFe ou NFCe.
 
+Para verificar https://gepir.gs1.org/index.php/search-by-gtin
+
 
 **NOTA: caso o fabricante/importador, não cadastre corretamente o seu produto poderão ocorrer rejeiçoes, isso não afeta os comerciantes pois quem será impedido de emitir a NFe será o fabricante/importador.**
 

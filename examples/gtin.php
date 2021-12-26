@@ -6,7 +6,7 @@ require_once '../bootstrap.php';
 use NFePHP\Gtin\Gtin;
 
 try {
-    if (Gtin::check('7898410771190')->isValid()) {
+    if (Gtin::check('3838410771190')->isValid()) {
         echo "Valido";
     }
 } catch (\Exception $e) {
