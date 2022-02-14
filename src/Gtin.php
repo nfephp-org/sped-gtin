@@ -189,14 +189,12 @@ final class Gtin
     protected function getPrefix()
     {
         $type = $this->getType();
+        $g14 = str_pad($this->number, 14, '0', STR_PAD_LEFT);
         switch ($type) {
-        case 12: 
-            //ajusta para GTIN 13 para extrair o prefixo
-            return "0". substr($this->number, 1, 3);
-        case 14: //begins with number not zero
-            return substr($this->number, 1, 3);
+        case 8:
+            return substr($g14, 6, 3);
         default:
-            return substr($this->number, 0, 3);
+            return substr($g14, 1, 3);
         }
     }
 
