@@ -15,7 +15,7 @@ jobs:
         strategy:
             fail-fast: false
             matrix:
-                php-version: ['7.1', '7.2', '7.3', '7.4', '8.0']
+                php-version: ['7.4', '8.0']
 
         steps:
             - name: Setup PHP
@@ -27,16 +27,11 @@ jobs:
             - name: checkout
               uses: actions/checkout@v2
 
-            - name: Set phpunit version
-              if: matrix.php-version == '7.1'
-              run: composer require "phpunit/phpunit:^6.0" -W --dev
-
             - name: Composer Install
               run: |
                 composer install --no-progress -o --no-ansi --no-interaction
 
             - name: Análises Estáticas
-              if: matrix.php-version != '7.1'
               run: |
                 composer stan
 
