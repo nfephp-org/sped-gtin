@@ -34,10 +34,8 @@ class GtinTest extends TestCase
      *
      * @covers Gtin
      * @covers ::__contruct
-     *
-     * @return void
      */
-    public function testCanInstantiate()
+    public function testCanInstantiate(): void
     {
         $gtin = new Gtin('78935761');
         $this->assertInstanceOf('NFePHP\Gtin\Gtin', $gtin);
@@ -49,10 +47,8 @@ class GtinTest extends TestCase
      * @covers Gtin
      * @covers ::__contruct
      * @covers ::check
-     *
-     * @return void
      */
-    public function testCanInstantiateStatic()
+    public function testCanInstantiateStatic(): void
     {
         $gtin = Gtin::check('78935761');
         $this->assertInstanceOf('NFePHP\Gtin\Gtin', $gtin);
@@ -62,10 +58,8 @@ class GtinTest extends TestCase
      * Region test
      *
      * @covers Gtin::getPrefixRegion
-     *
-     * @return void
      */
-    public function testRegion()
+    public function testRegion(): void
     {
         $gtin = new Gtin('78935761');
         $this->assertEquals('GS1 Brasil', $gtin->region);
@@ -78,10 +72,8 @@ class GtinTest extends TestCase
      * Check digit test
      *
      * @covers Gtin::getCheckDigit
-     *
-     * @return void
      */
-    public function testCheckDigit()
+    public function testCheckDigit(): void
     {
         $gtin = new Gtin('78935761');
         $this->assertEquals(1, $gtin->checkDigit);
@@ -95,10 +87,8 @@ class GtinTest extends TestCase
      *
      * @covers Gtin::getPrefix
      * @covers Gtin::getType
-     *
-     * @return void
      */
-    public function testPrefix()
+    public function testPrefix(): void
     {
         $gtin = new Gtin('78935761');
         $this->assertEquals('789', $gtin->prefix);
@@ -108,10 +98,8 @@ class GtinTest extends TestCase
      * Gtin is Valid
      *
      * @covers Gtin::isValid
-     *
-     * @return void
      */
-    public function testIsValid()
+    public function testIsValid(): void
     {
         $gtin = new Gtin('78935761');
         $this->assertTrue($gtin->isValid());
@@ -121,10 +109,8 @@ class GtinTest extends TestCase
      * SEM GTIN is Valid
      *
      * @covers Gtin::isValid
-     *
-     * @return void
      */
-    public function testSemGetin()
+    public function testSemGetin(): void
     {
         $gtin = new Gtin('SEM GTIN');
         $this->assertTrue($gtin->isValid());
@@ -132,13 +118,8 @@ class GtinTest extends TestCase
 
     /**
      * Test empty Gtin number
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Um numero GTIN deve ser passado.
-     *
-     * @return void
      */
-    public function testFailStringEmptyGtin()
+    public function testFailStringEmptyGtin(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Um numero GTIN deve ser passado.');
@@ -148,13 +129,8 @@ class GtinTest extends TestCase
 
     /**
      * Gtin null test
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Um numero GTIN deve ser passado.
-     *
-     * @return void
      */
-    public function testFailNullGtin()
+    public function testFailNullGtin(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Um numero GTIN deve ser passado.');
@@ -164,14 +140,8 @@ class GtinTest extends TestCase
 
     /**
      * Invalid string for GTIN test
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Um numero GTIN contêm apenas numeros
-     *    [A12345] não é aceito.
-     *
-     * @return void
      */
-    public function testInvalidStringGtin()
+    public function testInvalidStringGtin(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
@@ -183,14 +153,8 @@ class GtinTest extends TestCase
 
     /**
      * Minimum length test
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Apenas numeros GTIN 8, 12, 13 ou 14
-     *    este [12345] não atende esses parâmetros.
-     *
-     * @return void
      */
-    public function testInvalidMinLengthGtin()
+    public function testInvalidMinLengthGtin(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
@@ -203,14 +167,8 @@ class GtinTest extends TestCase
 
     /**
      * Maximum length test
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Apenas numeros GTIN 8, 12, 13 ou 14
-     *   este [1234567890123456] não atende esses parâmetros.
-     *
-     * @return void
      */
-    public function testInvalidMaxLengthGtin()
+    public function testInvalidMaxLengthGtin(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
@@ -223,14 +181,8 @@ class GtinTest extends TestCase
 
     /**
      * Invalid length test
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Apenas numeros GTIN 8, 12, 13 ou 14
-     *    este [1234567890] não atende esses parâmetros.
-     *
-     * @return void
      */
-    public function testInvalidLengthGtin()
+    public function testInvalidLengthGtin(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
@@ -243,13 +195,8 @@ class GtinTest extends TestCase
 
     /**
      * Invalid prefix test
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage O prefixo 510 do GTIN é INVALIDO [Not Found].
-     *
-     * @return void
      */
-    public function testInvalidPrefixGtin()
+    public function testInvalidPrefixGtin(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
@@ -265,25 +212,17 @@ class GtinTest extends TestCase
      * @expectedException        \InvalidArgumentException
      * @expectedExceptionMessage Somente prefixos do Brasil [789 e 790]
      *   são aceitáveis. O prefixo 779 do GTIN é INVALIDO [GS1 Argentina]..
-     *
-     * @return void
      */
     /*
-    public function testInvalidPrefixNonBrasil()
+    public function testInvalidPrefixNonBrasil(): void
     {
         $gtin = Gtin::check('77935762')->isValid();
     }*/
 
     /**
      * Invalid check digit test
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage GTIN [7890142547851] o digito verificador
-     *    é INVALIDO.
-     *
-     * @return void
      */
-    public function testInvalidCheckDigit()
+    public function testInvalidCheckDigit(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
@@ -295,13 +234,8 @@ class GtinTest extends TestCase
 
     /**
      * Gtin14 first digit test
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Um GTIN 14 não pode iniciar com numeral ZERO.
-     *
-     * @return void
      */
-    public function testFailGtin14BeginsZero()
+    public function testFailGtin14BeginsZero(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(

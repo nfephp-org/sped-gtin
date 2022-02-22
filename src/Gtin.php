@@ -7,7 +7,7 @@
  * @category  Library
  * @package   NFePHP\Gtin
  * @author    Roberto L. Machado <liuux.rlm@gmail.com>
- * @copyright 2021 NFePHP Copyright (c) 
+ * @copyright 2021 NFePHP Copyright (c)
  * @license   https://opensource.org/licenses/MIT MIT
  * @link      http://github.com/nfephp-org/sped-gtin
  */
@@ -16,11 +16,11 @@ namespace NFePHP\Gtin;
 
 /**
  * Class for validation of GTIN numbers used in NFe
- * 
+ *
  * @category  Library
  * @package   NFePHP\Gtin
  * @author    Roberto L. Machado <liuux.rlm@gmail.com>
- * @copyright 2021 NFePHP Copyright (c) 
+ * @copyright 2021 NFePHP Copyright (c)
  * @license   https://opensource.org/licenses/MIT MIT
  * @link      http://github.com/nfephp-org/sped-gtin
  */
@@ -28,64 +28,46 @@ final class Gtin
 {
     /**
      * Prefix of GTIN
-     * 
-     * @var string
      */
-    public $prefix;
+    public string $prefix;
     /**
      * Region Name
-     * 
-     * @var string
      */
-    public $region;
+    public string $region;
     /**
      * Check digit
-     * 
-     * @var integer
      */
-    public $checkDigit;
+    public int $checkDigit;
     /**
      * Type of GTIN
-     * 
-     * @var integer
      */
-    public $type;
+    public int $type;
     /**
      * Number
-     * 
-     * @var string
      */
-    protected $number;
+    protected string $number;
     /**
      * Length of GTIN
-     * 
-     * @var integer
      */
-    protected $lenght;
+    protected int $lenght;
     /**
      * Prefixes collection
-     * 
-     * @var array
      */
-    protected $stdPrefixCollection;
+    protected array $stdPrefixCollection;
     /**
      * Validation of prefix of GTIN
-     * 
-     * @var boolean
      */
-    protected $validPrefix = false;
+    protected bool $validPrefix = false;
     /**
      * Indication SEM GTIN
-     * 
-     * @var boolean 
      */
-    protected $semgtin = false;
+    protected bool $semgtin = false;
 
     /**
      * Caonstructor
-     * 
+     *
      * @param string|null $gtin gtin number
-     * 
+     *
      * @throws \InvalidArgumentException
      */
     public function __construct(string $gtin = null)
@@ -112,9 +94,9 @@ final class Gtin
             );
         }
         $this->lenght = (int) strlen($gtin);
-        if ($this->lenght != 8 
-            && $this->lenght != 12 
-            && $this->lenght != 13 
+        if ($this->lenght != 8
+            && $this->lenght != 12
+            && $this->lenght != 13
             && $this->lenght != 14
         ) {
             throw new \InvalidArgumentException(
@@ -133,10 +115,8 @@ final class Gtin
      * Static instantiation off class
      *
      * @param string|null $gtin gtin number
-     * 
-     * @return \NFePHP\Gtin\Gtin
      */
-    public static function check(string $gtin = null)
+    public static function check(string $gtin = null): self
     {
         return new static($gtin);
     }
@@ -144,11 +124,9 @@ final class Gtin
     /**
      * Validate GTIN 8, 12, 13, or 14 with check digit
      *
-     * @return bool
-     * 
      * @throws \InvalidArgumentException
      */
-    public function isValid()
+    public function isValid(): bool
     {
         if ($this->semgtin) {
             return true;
@@ -183,10 +161,8 @@ final class Gtin
 
     /**
      * Extract region prefix
-     *
-     * @return string
      */
-    protected function getPrefix()
+    protected function getPrefix(): string
     {
         $type = $this->getType();
         $g14 = str_pad($this->number, 14, '0', STR_PAD_LEFT);
@@ -200,10 +176,8 @@ final class Gtin
 
     /**
      * Identify GTIN type GTIN 8,12,13,14 or NONE
-     *
-     * @return int
      */
-    protected function getType()
+    protected function getType(): int
     {
         $gtinnorm = str_pad($this->number, 14, '0', STR_PAD_LEFT);
         if (substr($gtinnorm, 0, 6) == '000000') {
@@ -224,10 +198,8 @@ final class Gtin
 
     /**
      * Validate prefix region
-     *
-     * @return boolean
      */
-    protected function isPrefixValid()
+    protected function isPrefixValid(): bool
     {
         return $this->validPrefix;
     }
@@ -236,10 +208,8 @@ final class Gtin
      * Recover region from prefix code
      *
      * @param string $prefix region prefix
-     * 
-     * @return string
      */
-    protected function getPrefixRegion($prefix)
+    protected function getPrefixRegion(string $prefix): string
     {
         $pf = (int) $prefix;
         foreach ($this->stdPrefixCollection as $std) {
@@ -257,12 +227,10 @@ final class Gtin
 
     /**
      * Calculate check digit from GTIN 8, 12, 13 or 14
-     *
-     * @return integer
      */
-    protected function getCheckDigit()
+    protected function getCheckDigit(): int
     {
-        $len = (int) strlen($this->number);
+        $len = strlen($this->number);
         $gtin = substr($this->number, 0, $len-1);
         $gtin = str_pad($gtin, 15, '0', STR_PAD_LEFT);
         $total = 0;
