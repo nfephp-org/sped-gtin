@@ -1,17 +1,5 @@
 <?php
 
-/**
- * This file belongs to the NFePHP project
- * php version 7.0 or higher
- *
- * @category  Library
- * @package   NFePHP\Gtin
- * @author    Roberto L. Machado <liuux.rlm@gmail.com>
- * @copyright 2021 NFePHP Copyright (c)
- * @license   https://opensource.org/licenses/MIT MIT
- * @link      http://github.com/nfephp-org/sped-gtin
- */
-
 namespace NFePHP\Gtin\Tests;
 
 use NFePHP\Gtin\Gtin;
@@ -22,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category  Library
  * @package   NFePHP\Gtin
- * @author    Roberto L. Machado <liuux.rlm@gmail.com>
+ * @author    Roberto L. Machado <liuux dot rlm at gmail dot com>
  * @copyright 2021 NFePHP Copyright (c)
  * @license   https://opensource.org/licenses/MIT MIT
  * @link      http://github.com/nfephp-org/sped-gtin

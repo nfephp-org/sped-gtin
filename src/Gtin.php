@@ -1,17 +1,5 @@
 <?php
 
-/**
- * This file belongs to the NFePHP project
- * php version 7.0 or higher
- *
- * @category  Library
- * @package   NFePHP\Gtin
- * @author    Roberto L. Machado <liuux.rlm@gmail.com>
- * @copyright 2021 NFePHP Copyright (c)
- * @license   https://opensource.org/licenses/MIT MIT
- * @link      http://github.com/nfephp-org/sped-gtin
- */
-
 namespace NFePHP\Gtin;
 
 /**
@@ -19,11 +7,15 @@ namespace NFePHP\Gtin;
  *
  * @category  Library
  * @package   NFePHP\Gtin
- * @author    Roberto L. Machado <liuux.rlm@gmail.com>
+ * @author    Roberto L. Machado <linux dot rlm at gmail dot com>
  * @copyright 2021 NFePHP Copyright (c)
  * @license   https://opensource.org/licenses/MIT MIT
  * @link      http://github.com/nfephp-org/sped-gtin
  */
+
+use NFePHP\Common\Certificate;
+use NFePHP\Gtin\Common\Consulta;
+
 final class Gtin
 {
     /**
@@ -62,6 +54,14 @@ final class Gtin
      * Indication SEM GTIN
      */
     protected bool $semgtin = false;
+    /**
+     * @var Certificate|null
+     */
+    protected $certificate;
+    /**
+     * Config como do sped-nfe
+     */
+    protected \stdClass $config;
 
     /**
      * Caonstructor
@@ -70,8 +70,10 @@ final class Gtin
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(string $gtin = null)
+    public function __construct(string $gtin = null, Certificate $certificate = null)
     {
+        $this->certificate = $certificate;
+
         if ($gtin == 'SEM GTIN') {
             $this->number = 'SEM GTIN';
             $this->prefix = '000';
@@ -109,6 +111,7 @@ final class Gtin
         $this->region = $this->getPrefixRegion($this->prefix);
         $this->checkDigit = $this->getCheckDigit();
         $this->type = $this->getType();
+
     }
 
     /**
@@ -116,9 +119,9 @@ final class Gtin
      *
      * @param string|null $gtin gtin number
      */
-    public static function check(string $gtin = null): self
+    public static function check(string $gtin = null, Certificate $certificate = null): self
     {
-        return new static($gtin);
+        return new static($gtin, $certificate);
     }
 
     /**
@@ -160,6 +163,39 @@ final class Gtin
     }
 
     /**
+     * Consulta GTIN no CCG SEFAZ
+     * @return object
+     */
+    public function consulta()
+    {
+        if (empty($this->number)) {
+            throw new \InvalidArgumentException(
+                'A consulta não pode ser realizada sem indicar um numero GTIN.'
+            );
+        }
+        if ($this->number == 'SEM GTIN') {
+            throw new \InvalidArgumentException(
+                'SEM GTIN não é um número a ser verificado'
+            );
+        }
+        if (empty($this->certificate)) {
+            throw new \InvalidArgumentException(
+                'A consulta não pode ser realizada sem um Certificado digital'
+            );
+        }
+        $this->isValid();
+        $prefix = $this->getPrefix();
+        if (!in_array($prefix, ['789', '790'])) {
+            throw new \InvalidArgumentException(
+                'Esse GTIN não pertence ao BRASIL e portanto não pode ser consultado no CCG'
+            );
+        }
+        $cons = new Consulta($this->certificate);
+        $cons->setEncriptPrivateKey(true);
+        return $cons->consulta($this->number);
+    }
+
+    /**
      * Extract region prefix
      */
     protected function getPrefix(): string
@@ -167,10 +203,10 @@ final class Gtin
         $type = $this->getType();
         $g14 = str_pad($this->number, 14, '0', STR_PAD_LEFT);
         switch ($type) {
-        case 8:
-            return substr($g14, 6, 3);
-        default:
-            return substr($g14, 1, 3);
+            case 8:
+                return substr($g14, 6, 3);
+            default:
+                return substr($g14, 1, 3);
         }
     }
 

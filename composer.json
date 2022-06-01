@@ -34,7 +34,15 @@
         }
     ],
     "require": {
-        "php": ">= 7.4"
+        "php": ">= 7.4",
+        "ext-dom": "*",
+        "ext-curl": "*",
+        "ext-openssl": "*",
+        "ext-soap": "*",
+        "ext-json": "*",
+        "ext-simplexml": "*",
+        "ext-libxml": "*",
+        "nfephp-org/sped-common": "^5.1.0"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "dev-master",
