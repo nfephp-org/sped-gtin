@@ -14,6 +14,7 @@ class Consulta extends SoapBase implements SoapInterface
 
     /**
      * Constructor
+     *
      * @param Certificate $certificate
      */
     public function __construct(Certificate $certificate)
@@ -23,7 +24,8 @@ class Consulta extends SoapBase implements SoapInterface
 
     /**
      * Realiza a consulta do GTIN no cadastro CCG
-     * @param string $gtin
+     *
+     * @param  string $gtin
      * @return object
      */
     public function consulta($gtin)
@@ -36,7 +38,7 @@ class Consulta extends SoapBase implements SoapInterface
             $url,
             'ccgConsGTIN',
             $action = 'http://www.portalfiscal.inf.br/nfe/wsdl/ccgConsGtin/ccgConsGTIN',
-            null,
+            SOAP_1_2,
             [],
             [],
             $request,
@@ -47,7 +49,8 @@ class Consulta extends SoapBase implements SoapInterface
 
     /**
      * Extrai os cados da resposta da SEFAZ
-     * @param string $content
+     *
+     * @param  string $content
      * @return object
      */
     protected function extractResponse(string $content): object
@@ -80,14 +83,14 @@ class Consulta extends SoapBase implements SoapInterface
     }
 
     /**
-     * @param string $url
-     * @param string $operation
-     * @param string $action
-     * @param int $soapver
-     * @param array $parameters
-     * @param array $namespaces
-     * @param string $request
-     * @param \SoapHeader|null $soapheader
+     * @param  string           $url
+     * @param  string           $operation
+     * @param  string           $action
+     * @param  int              $soapver
+     * @param  array            $parameters
+     * @param  array            $namespaces
+     * @param  string           $request
+     * @param  \SoapHeader|null $soapheader
      * @return mixed|string
      */
     public function send(
@@ -182,7 +185,8 @@ class Consulta extends SoapBase implements SoapInterface
 
     /**
      * Extrai mensagem da liste de erros HTTP
-     * @param integer $code
+     *
+     * @param  integer $code
      * @return string
      */
     private function getCodeMessage($code)
@@ -192,22 +196,5 @@ class Consulta extends SoapBase implements SoapInterface
             return $codes[$code]['description'];
         }
         return "Erro desconhecido.";
-    }
-
-    /**
-     * Set proxy into cURL parameters
-     * @param resource $oCurl
-     */
-    private function setCurlProxy(&$oCurl)
-    {
-        if ($this->proxyIP != '') {
-            curl_setopt($oCurl, CURLOPT_HTTPPROXYTUNNEL, 1);
-            curl_setopt($oCurl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
-            curl_setopt($oCurl, CURLOPT_PROXY, $this->proxyIP . ':' . $this->proxyPort);
-            if ($this->proxyUser != '') {
-                curl_setopt($oCurl, CURLOPT_PROXYUSERPWD, $this->proxyUser . ':' . $this->proxyPass);
-                curl_setopt($oCurl, CURLOPT_PROXYAUTH, CURLAUTH_BASIC);
-            }
-        }
     }
 }

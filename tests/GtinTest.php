@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category  Library
  * @package   NFePHP\Gtin
- * @author    Roberto L. Machado <liuux dot rlm at gmail dot com>
+ * @author    Roberto L. Machado <linux dot rlm at gmail dot com>
  * @copyright 2021 NFePHP Copyright (c)
  * @license   https://opensource.org/licenses/MIT MIT
  * @link      http://github.com/nfephp-org/sped-gtin
