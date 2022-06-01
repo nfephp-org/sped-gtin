@@ -164,6 +164,7 @@ final class Gtin
 
     /**
      * Consulta GTIN no CCG SEFAZ
+     *
      * @return object
      */
     public function consulta()
@@ -203,10 +204,10 @@ final class Gtin
         $type = $this->getType();
         $g14 = str_pad($this->number, 14, '0', STR_PAD_LEFT);
         switch ($type) {
-            case 8:
-                return substr($g14, 6, 3);
-            default:
-                return substr($g14, 1, 3);
+        case 8:
+            return substr($g14, 6, 3);
+        default:
+            return substr($g14, 1, 3);
         }
     }
 
