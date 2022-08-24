@@ -248,18 +248,13 @@ final class Gtin
      */
     protected function getPrefixRegion(string $prefix): string
     {
-        $pf = (int) $prefix;
-        foreach ($this->stdPrefixCollection as $std) {
-            $nI = (int) $std->nIni;
-            $nF = (int) $std->nFim;
-            $this->validPrefix = true;
-            $region = $std->region;
-            if ($pf >= $nI && $pf <= $nF) {
-                return $region;
-            }
+        $prefixDefinition = $this->getPrefixDefinition($prefix);
+        if ($prefixDefinition === null) {
+            $this->validPrefix = false;
+            return "Not Found";
         }
-        $this->validPrefix = false;
-        return "Not Found";
+        $this->validPrefix = true;
+        return $prefixDefinition->getRegion();
     }
 
     /**
@@ -280,5 +275,28 @@ final class Gtin
             $dv = 0;
         }
         return $dv;
+    }
+
+    protected function getPrefixDefinition(string $prefix): ?PrefixDefinition
+    {
+        foreach ($this->stdPrefixCollection as $std) {
+            $definition = new PrefixDefinition($std);
+            if ($definition->hasPrefix($prefix)) {
+                return $definition;
+            }
+        }
+
+        return null;
+    }
+
+
+    public function isRestricted(): bool
+    {
+        $prefixDefinition = $this->getPrefixDefinition($this->prefix);
+        if ($prefixDefinition === null) {
+            throw new \RuntimeException("{$this->prefix} is not a valid prefix!");
+        }
+
+        return $prefixDefinition->isRestricted();
     }
 }

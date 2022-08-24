@@ -20,8 +20,8 @@ class GtinTest extends TestCase
     /**
      * Can instantiate class test
      *
-     * @covers Gtin
-     * @covers ::__contruct
+     * @covers \NFePHP\Gtin\Gtin
+     * @covers \NFePHP\Gtin\Gtin::__construct()
      */
     public function testCanInstantiate(): void
     {
@@ -32,9 +32,9 @@ class GtinTest extends TestCase
     /**
      * Can instantiate static class test
      *
-     * @covers Gtin
-     * @covers ::__contruct
-     * @covers ::check
+     * @covers \NFePHP\Gtin\Gtin
+     * @covers \NFePHP\Gtin\Gtin::__construct()
+     * @covers \NFePHP\Gtin\Gtin::check()
      */
     public function testCanInstantiateStatic(): void
     {
@@ -45,7 +45,7 @@ class GtinTest extends TestCase
     /**
      * Region test
      *
-     * @covers Gtin::getPrefixRegion
+     * @covers \NFePHP\Gtin\Gtin::getPrefixRegion()
      */
     public function testRegion(): void
     {
@@ -59,7 +59,7 @@ class GtinTest extends TestCase
     /**
      * Check digit test
      *
-     * @covers Gtin::getCheckDigit
+     * @covers \NFePHP\Gtin\Gtin::getCheckDigit()
      */
     public function testCheckDigit(): void
     {
@@ -73,8 +73,8 @@ class GtinTest extends TestCase
     /**
      * Prefix test
      *
-     * @covers Gtin::getPrefix
-     * @covers Gtin::getType
+     * @covers \NFePHP\Gtin\Gtin::getPrefix()
+     * @covers \NFePHP\Gtin\Gtin::getType()
      */
     public function testPrefix(): void
     {
@@ -85,7 +85,7 @@ class GtinTest extends TestCase
     /**
      * Gtin is Valid
      *
-     * @covers Gtin::isValid
+     * @covers \NFePHP\Gtin\Gtin::isValid()
      */
     public function testIsValid(): void
     {
@@ -96,7 +96,7 @@ class GtinTest extends TestCase
     /**
      * SEM GTIN is Valid
      *
-     * @covers Gtin::isValid
+     * @covers \NFePHP\Gtin\Gtin::isValid()
      */
     public function testSemGetin(): void
     {
@@ -231,5 +231,21 @@ class GtinTest extends TestCase
         );
 
         Gtin::check('07890142547852')->isValid();
+    }
+
+    public function test_is_restricted(): void
+    {
+        $gtin = new Gtin('2244000425601');
+        $this->assertTrue($gtin->isRestricted());
+
+        $gtin = new Gtin('7909934485750');
+        $this->assertFalse($gtin->isRestricted());
+    }
+
+    public function test_is_restricted_invalid_prefix(): void
+    {
+        $this->expectErrorMessage("510 is not a valid prefix!");
+        $gtin = new Gtin('5109907267612');
+        $gtin->isRestricted();
     }
 }
