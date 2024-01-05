@@ -19,6 +19,10 @@ use NFePHP\Gtin\Common\Consulta;
 final class Gtin
 {
     /**
+     * Código de retorno SEFAZ
+     */
+    public string $cstat;
+    /**
      * Prefix of GTIN
      */
     public string $prefix;
@@ -80,6 +84,7 @@ final class Gtin
             $this->region = 'GS1 Brasil';
             $this->checkDigit = 0;
             $this->type = 0;
+            $this->cstat = null;
             $this->semgtin = true;
             $this->validPrefix = true;
             return;
