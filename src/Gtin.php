@@ -70,7 +70,7 @@ final class Gtin
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(string $gtin = null, Certificate $certificate = null)
+    public function __construct(?string $gtin = null, ?Certificate $certificate = null)
     {
         $this->certificate = $certificate;
 
@@ -119,7 +119,7 @@ final class Gtin
      *
      * @param string|null $gtin gtin number
      */
-    public static function check(string $gtin = null, Certificate $certificate = null): self
+    public static function check(?string $gtin = null, ?Certificate $certificate = null): self
     {
         return new static($gtin, $certificate);
     }
