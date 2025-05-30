@@ -144,6 +144,10 @@ Este pacote é aderente com os [PSR-1], [PSR-2] e [PSR-4]. Se você observar neg
 
 Não deixe de se cadastrar no [grupo de discussão do NFePHP](http://groups.google.com/group/nfephp) para acompanhar o desenvolvimento e participar das discussões e tirar dúvidas!
 
+## Atualizando a tabela de prefixos GS1
+
+Faça o download da tabela do site https://www.nfe.fazenda.gov.br/ e exporte a planilha com os prefixos em formato UTF-8 CSV pelo Excel.
+
 ## Install
 
 **Este pacote está listado no [Packgist](https://packagist.org/) foi desenvolvido para uso do [Composer](https://getcomposer.org/), portanto não será explicitada nenhuma alternativa de instalação.**
