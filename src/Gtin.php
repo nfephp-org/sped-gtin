@@ -42,10 +42,11 @@ final class Gtin
      * Length of GTIN
      */
     protected int $lenght;
+
     /**
-     * Prefixes collection
+     * Tabela de prefixos GS1 baixado do site nfe.fazenda.gov.br e convertido em CSV
      */
-    protected array $stdPrefixCollection;
+    protected array $tabelaPrefixoGs1 = [];
     /**
      * Validation of prefix of GTIN
      */
@@ -84,9 +85,11 @@ final class Gtin
             $this->validPrefix = true;
             return;
         }
-        $this->stdPrefixCollection = json_decode(
-            file_get_contents(__DIR__.'/prefixcollection.json')
-        );
+
+        $linhas = file(__DIR__ . '/Tabela_Prefixo_GS1.csv', FILE_IGNORE_NEW_LINES);
+        unset($linhas[0]); //Remove o header
+        $this->tabelaPrefixoGs1 = $linhas;
+
         if (empty($gtin)) {
             throw new \InvalidArgumentException("Um numero GTIN deve ser passado.");
         }
@@ -279,8 +282,9 @@ final class Gtin
 
     protected function getPrefixDefinition(string $prefix): ?PrefixDefinition
     {
-        foreach ($this->stdPrefixCollection as $std) {
-            $definition = new PrefixDefinition($std);
+        foreach ($this->tabelaPrefixoGs1 as $registro) {
+            [$nIni, $nFim, $restrito, $regiao] = explode(';', $registro);
+            $definition = new PrefixDefinition($nIni, $nFim, $restrito, $regiao);
             if ($definition->hasPrefix($prefix)) {
                 return $definition;
             }

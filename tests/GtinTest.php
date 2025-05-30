@@ -244,7 +244,7 @@ class GtinTest extends TestCase
 
     public function test_is_restricted_invalid_prefix(): void
     {
-        $this->expectErrorMessage("510 is not a valid prefix!");
+        $this->expectExceptionMessage("510 is not a valid prefix!");
         $gtin = new Gtin('5109907267612');
         $gtin->isRestricted();
     }
