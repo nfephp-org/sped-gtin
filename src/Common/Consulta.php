@@ -61,20 +61,27 @@ class Consulta extends SoapBase implements SoapInterface
         $cstat = $node->getElementsByTagName('cStat')->item(0)->nodeValue;
         if ($cstat == '9490') {
             $resp = [
+                // retorno do código do sefaz
+                'cstat' => $cstat,
                 'sucesso' => true,
                 'motivo' => "Dados encontrados.",
                 'xProd' => $node->getElementsByTagName('xProd')->item(0)->nodeValue ?? null,
                 'NCM' => $node->getElementsByTagName('NCM')->item(0)->nodeValue ?? null,
                 'CEST' => $node->getElementsByTagName('CEST')->item(0)->nodeValue ?? null,
             ];
-        } elseif ($cstat == '9496') {
-            $resp = [
-                'sucesso' => true,
-                'motivo' => "Dados encontrados, mas não disponíveis."
-            ];
+
+        // somente o cstat == 9490 tem informação de ncm
+        // } elseif ($cstat == '9496') {
+        //     $resp = [
+        //         'sucesso' => true,
+        //         'motivo' => "Dados encontrados, mas não disponíveis."
+        //     ];
+
         } else {
             //ocorreu algum erro
             $resp = [
+                // retorno do código do sefaz
+                'cstat' => $cstat,
                 'sucesso' => false,
                 'motivo' => $node->getElementsByTagName('xMotivo')->item(0)->nodeValue ?? null
             ];
