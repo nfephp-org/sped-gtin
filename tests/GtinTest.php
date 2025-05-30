@@ -248,4 +248,11 @@ class GtinTest extends TestCase
         $gtin = new Gtin('5109907267612');
         $gtin->isRestricted();
     }
+
+    public function test_invalid_prefix(): void
+    {
+        $this->expectExceptionMessage("O prefixo 606 do GTIN é INVALIDO [Not Found].");
+        $gtin = new Gtin('6065299511600');
+        $gtin->isValid();
+    }
 }
