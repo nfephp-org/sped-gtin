@@ -58,31 +58,23 @@ class Consulta extends SoapBase implements SoapInterface
         $dom = new DOMImproved();
         $dom->loadXML($content);
         $node = $dom->getElementsByTagName('retConsGTIN')->item(0);
-        $cstat = $node->getElementsByTagName('cStat')->item(0)->nodeValue;
+        $cstat = $node->getElementsByTagName('cStat')->item(0)->nodeValue ?? '';
         if ($cstat == '9490') {
             $resp = [
                 // retorno do código do sefaz
-                'cstat' => $cstat,
                 'sucesso' => true,
+                'cstat' => $cstat,
                 'motivo' => "Dados encontrados.",
                 'xProd' => $node->getElementsByTagName('xProd')->item(0)->nodeValue ?? null,
                 'NCM' => $node->getElementsByTagName('NCM')->item(0)->nodeValue ?? null,
                 'CEST' => $node->getElementsByTagName('CEST')->item(0)->nodeValue ?? null,
             ];
-
-        // somente o cstat == 9490 tem informação de ncm
-        // } elseif ($cstat == '9496') {
-        //     $resp = [
-        //         'sucesso' => true,
-        //         'motivo' => "Dados encontrados, mas não disponíveis."
-        //     ];
-
         } else {
             //ocorreu algum erro
             $resp = [
                 // retorno do código do sefaz
-                'cstat' => $cstat,
                 'sucesso' => false,
+                'cstat' => $cstat,
                 'motivo' => $node->getElementsByTagName('xMotivo')->item(0)->nodeValue ?? null
             ];
         }

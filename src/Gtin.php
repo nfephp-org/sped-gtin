@@ -85,12 +85,11 @@ final class Gtin
             $this->region = 'GS1 Brasil';
             $this->checkDigit = 0;
             $this->type = 0;
-            $this->cstat = null;
+            $this->cstat = '';
             $this->semgtin = true;
             $this->validPrefix = true;
             return;
         }
-
         $linhas = file(__DIR__ . '/Tabela_Prefixo_GS1.csv', FILE_IGNORE_NEW_LINES);
         unset($linhas[0]); //Remove o header
         $this->tabelaPrefixoGs1 = $linhas;
