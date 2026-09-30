@@ -72,5 +72,10 @@
             "v1.0": "1.0-dev"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "config": {
+        "platform": {
+            "php": "7.4.33"
+        }
+    }
 }
